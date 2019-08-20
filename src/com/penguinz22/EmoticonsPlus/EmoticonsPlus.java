@@ -17,6 +17,8 @@ public class EmoticonsPlus extends JavaPlugin implements Listener{
 	public List<Emote> emotes;
 	private EmoteConfiguration config;
 	
+	private final int amountPerPage = 10;
+	
 	@Override
 	public void onEnable() {
 		getServer().getPluginManager().registerEvents(this, this);
@@ -53,14 +55,47 @@ public class EmoticonsPlus extends JavaPlugin implements Listener{
 					sender.sendMessage(ChatColor.LIGHT_PURPLE+"[Emotes] "+ChatColor.GRAY+"- "+ChatColor.GREEN+"Successfully reloaded the emotes config file!");
 					return true;
 				} else if(args[0].equalsIgnoreCase("list")) {
-					// TODO - Add a list for emotes and create pages based on the amount of emotes
-					sender.sendMessage(ChatColor.RED+"This feature will be developed in the future!");
-					return false;
+					if(args.length >= 2) {
+						int page = 1;
+						try {
+							page = Integer.valueOf(args[1]);
+						} catch(NumberFormatException e) {
+							sender.sendMessage(ChatColor.RED+"Incorrect Usage, Please do /emote list <page>");
+							return false;
+						}
+						sendEmotePage(sender, page);
+					} else {
+						sendEmotePage(sender, 1);
+					}
+					return true;
 				}
 			}
 			
 		}
 		return false;
+	}
+	
+	private void sendEmotePage(CommandSender sender, int page) {
+		int maxPages = (int) Math.ceil((double) emotes.size()/amountPerPage);
+		if(page > maxPages) {
+			if(maxPages == 0) {
+				sender.sendMessage(ChatColor.RED+"There are not emotes currently!");
+				return;
+			}
+			sender.sendMessage(ChatColor.RED+"There is no page "+page+"! There are only "+maxPages+" pages!");
+		} else if(page <= 0) {
+			sender.sendMessage(ChatColor.RED+"Please start at page 1!");
+		} else {
+			sender.sendMessage(ChatColor.GREEN+"Showing emotes, page "+page+" of "+maxPages+"!");
+			for (int i = 0; i < amountPerPage; i++) {
+				if((emotes.size() == (page-1)*amountPerPage+i))
+					break;
+				Emote emote = emotes.get((page-1)*amountPerPage+i);
+				sender.sendMessage(ChatColor.DARK_GRAY+" - "+ChatColor.LIGHT_PURPLE+":"+emote.getName()+":"+ChatColor.GRAY+" - "+ChatColor.LIGHT_PURPLE+emote.getUnicode());
+			}
+			sender.sendMessage("");
+			sender.sendMessage(ChatColor.RED+"Do \"/emote list <page>\" to go to other pages!");
+		}
 	}
 	
 	private void sendHelp(CommandSender sender) {

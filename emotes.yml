@@ -1,4 +1,4 @@
-# Emotes Config File
+# Emotes Config File, follow the format to add your own emotes
 
 smiley:
   content: "☺"
@@ -22,8 +22,4 @@ tableflip:
   
 uwu:
   content: "(´・ω・｀)"
-  enabled: true
-  
-cheeks:
-  content: "Ѡ"
   enabled: true

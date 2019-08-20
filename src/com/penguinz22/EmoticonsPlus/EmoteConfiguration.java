@@ -23,11 +23,11 @@ public class EmoteConfiguration {
 		if(!pl.getDataFolder().exists())
 			pl.getDataFolder().mkdir();
 		this.emotesFile = new File(pl.getDataFolder().getPath(), "emotes.yml");
+		if(!this.emotesFile.exists()) {
+			pl.saveResource("emotes.yml", false);
+		}
 		System.out.println(emotesFile.getPath());
 		this.emotesConfig = YamlConfiguration.loadConfiguration(emotesFile);
-		InputStream df = pl.getResource("emotes.yml");
-		if(df != null)
-			this.emotesConfig.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(df, Charsets.UTF_8)));
 		try {
 			this.emotesConfig.save(emotesFile);
 		} catch (IOException e) {

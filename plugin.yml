@@ -3,7 +3,7 @@ description: A plugin that adds the inclusion of emoticons to liven up chat
 author: Penguinz22
 
 main: com.penguinz22.EmoticonsPlus.EmoticonsPlus
-version: 1.0.0
+version: 1.0
 
 commands:
   emote:
