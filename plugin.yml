@@ -1,0 +1,14 @@
+name: EmoticonsPlus
+description: A plugin that adds the inclusion of emoticons to liven up chat
+author: Penguinz22
+
+main: com.penguinz22.EmoticonsPlus.EmoticonsPlus
+version: 1.0.0
+
+commands:
+  emote:
+    description: The command for anything emote related
+
+permissions:
+  emotes.reload:
+    default: op

@@ -1,0 +1,29 @@
+# Emotes Config File
+
+smiley:
+  content: "☺"
+  enabled: true
+  
+fullsmiley:
+  content: "☻"
+  enabled: true
+  
+checkmark:
+  content: "✓"
+  enabled: true
+  
+x:
+  content: "✕"
+  enabled: true
+  
+tableflip:
+  content: "(╯°□°)╯︵ ┻━┻"
+  enabled: true
+  
+uwu:
+  content: "(´・ω・｀)"
+  enabled: true
+  
+cheeks:
+  content: "Ѡ"
+  enabled: true
