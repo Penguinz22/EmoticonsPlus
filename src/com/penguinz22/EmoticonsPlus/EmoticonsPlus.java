@@ -12,7 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class EmoticonsPlus extends JavaPlugin implements Listener{
+public class EmoticonsPlus extends JavaPlugin implements Listener {
 
 	public List<Emote> emotes;
 	private EmoteConfiguration config;
